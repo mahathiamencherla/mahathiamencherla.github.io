@@ -6,8 +6,11 @@ const Workex = () => {
 
   return (
     <Fragment >
-      <div style={{height: '1000px'}}>
-      <h1 ref={workex}>Workex</h1>
+      <div className="page-wrapper">
+      <h1 ref={workex}>Work Experience</h1>
+      <div className="div-container">
+        My work experience
+      </div>
       </div>
     </Fragment>
   )

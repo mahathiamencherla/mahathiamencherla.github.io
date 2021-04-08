@@ -6,8 +6,11 @@ const Contact = () => {
 
   return (
     <Fragment >
-      <div style={{height: '1000px'}}>
+      <div className="page-wrapper">
       <h1 ref={contact}>Contact</h1>
+      <div className="div-container">
+        CONTACT ME
+      </div>
       </div>
     </Fragment>
   )

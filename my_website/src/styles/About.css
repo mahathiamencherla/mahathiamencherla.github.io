@@ -1,0 +1,13 @@
+.div-container {
+  margin: 4rem auto 0 auto;
+  background-color: rgba(0,172,193,0.5);
+  width: 95%;
+
+  height: 88vh;
+  /* clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); */
+}
+
+.page-wrapper {
+  height: 100rem;
+  text-align: center;
+}

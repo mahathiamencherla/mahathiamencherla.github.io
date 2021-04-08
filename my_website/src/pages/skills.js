@@ -6,8 +6,11 @@ const Skills = () => {
 
   return (
     <Fragment >
-      <div style={{height: '1000px'}}>
+      <div className="page-wrapper">
       <h1 ref={skills}>Skills</h1>
+      <div className="div-container">
+        skills
+      </div>
       </div>
     </Fragment>
   )
