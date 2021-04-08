@@ -1,8 +1,17 @@
+import React, { Fragment } from 'react';
+
+import Waves from '../components/waves';
+import AboutMe from './about';
+import Projects from './projects';
 import '../styles/Home.css';
+
 import Orca from '../orca.png';
 
-const Home = () => {
+
+const Home = (props) => {
+
   return (
+    <Fragment>
     <div className="header">
       <div className="inner-header">
         <div className="header-text">
@@ -13,21 +22,12 @@ const Home = () => {
           <img src={Orca} alt="orca" width="300" height="300"></img>
         </div>
       </div>
-      <div>
-        <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
-        <defs>
-        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g className="parallax">
-        <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-        <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-        <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-        <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
-        </g>
-        </svg>
-        </div>
+    <Waves/> 
     </div>
+    <div style={{height: '22vh'}}></div>
+    <AboutMe/>
+    <Projects/>
+    </Fragment>
   );
 }
 
