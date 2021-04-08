@@ -2,11 +2,16 @@ import React, { Fragment } from 'react';
 
 import Waves from '../components/waves';
 import AboutMe from './about';
+import Workex from './workex';
 import Projects from './projects';
+import Skills from './skills';
+import Interests from './interests';
+import Volunteering from './volunteering';
+import Contact from './contact';
+
 import '../styles/Home.css';
 
 import Orca from '../orca.png';
-
 
 const Home = (props) => {
 
@@ -26,7 +31,12 @@ const Home = (props) => {
     </div>
     <div style={{height: '22vh'}}></div>
     <AboutMe/>
+    <Workex/>
     <Projects/>
+    <Skills/>
+    <Interests/>
+    <Volunteering/>
+    <Contact/>
     </Fragment>
   );
 }

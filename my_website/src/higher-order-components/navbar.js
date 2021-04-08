@@ -9,34 +9,65 @@ import { AppBar, Toolbar, IconButton,
          ListItemText, Typography } from '@material-ui/core';
 
 
-const Navbar = ({ active }) => {
-  const { aboutme, projects } = useContext(Context);
+const Navbar = (props) => {
+  const { aboutme, workex, projects, skills, interests, volunteering, contact, activePage, setActivePage } = useContext(Context);
 
   const [ isDrawerOpen, setDrawerOpen ] = useState(false);
 
     const navs = [
-        { key: 'Contact', display: 'Contact', path: '/contact' },
-        { key: 'Volunteering', display: 'Volunteering', path: '/volunteering' },
-        { key: 'Interests', display: 'Interests', path: '/interests' },
-        { key: 'Skills', display: 'Skills', path: '/skills' },
+        { key: 'contact', display: 'Contact', path: '/contact' },
+        { key: 'volunteering', display: 'Volunteering', path: '/volunteering' },
+        { key: 'interests', display: 'Interests', path: '/interests' },
+        { key: 'skills', display: 'Skills', path: '/skills' },
         { key: 'projects', display: 'Projects', path: '/projects' },
-        { key: 'Work Experience', display: 'Work Experience', path: '/work-exp' },
+        { key: 'workex', display: 'Work Experience', path: '/work-exp' },
         { key: 'aboutme', display: 'About Me', path: '/about' },
-        { key: 'Home', display: 'Home', path: '/' },
+        { key: 'home', display: 'Home', path: '/' },
     ];
 
     const pageClicked = (key) => {
-     if(key === 'aboutme') {
+        setActivePage(key)
+     if(key === 'aboutme') {   
       window.scrollTo({
         top: aboutme.current.offsetTop,
         behavior: 'smooth'
       })
-     } else if(key === 'projects') {
+     } else if(key === 'workex') {
       window.scrollTo({
-        top: projects.current.offsetTop,
+        top: workex.current.offsetTop,
         behavior: 'smooth'
       })
-     }
+     } else if(key === 'projects') {
+        window.scrollTo({
+          top: projects.current.offsetTop,
+          behavior: 'smooth'
+        })
+       }else if(key === 'skills') {
+        window.scrollTo({
+          top: skills.current.offsetTop,
+          behavior: 'smooth'
+        })
+       }else if(key === 'interests') {
+        window.scrollTo({
+          top: interests.current.offsetTop,
+          behavior: 'smooth'
+        })
+       }else if(key === 'volunteering') {
+        window.scrollTo({
+          top: volunteering.current.offsetTop,
+          behavior: 'smooth'
+        })
+       } else if(key === 'contact') {
+        window.scrollTo({
+          top: contact.current.offsetTop,
+          behavior: 'smooth'
+        })
+       } else {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+       }
   }
 
     return (
@@ -52,17 +83,18 @@ const Navbar = ({ active }) => {
             </IconButton>
 
             <div className='navs-container'>
-                {navs.reverse().map( nav => (
+                {navs.reverse().map( nav => {
+                    return (
                     <span 
                         key={ nav.key } 
-                        className={`nav ${ active === nav.key ? 'active': ''}`}
+                        className={`nav ${ activePage === nav.key ? 'active': ''}`}
                         // onClick={() => window.location.href = `${nav.path}`}
                         onClick={() => pageClicked(nav.key)}
                         title={"Coming soon!"}
                     >
                         { nav.display }
                     </span>
-                ))}
+                )})}
             </div>            
         </Toolbar>
 
@@ -74,6 +106,7 @@ const Navbar = ({ active }) => {
                     {navs.map(nav => (
                         <ListItem button key={nav.key}
                         //  onClick={() => window.location.href = `${nav.path}`}
+                        onClick={() => pageClicked(nav.key)}
                         title={"Coming soon!"}
                          >
                             <ListItemText disableTypography

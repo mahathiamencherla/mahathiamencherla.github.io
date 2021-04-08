@@ -6,7 +6,7 @@ const Header = ( props ) => {
     return (
     <Fragment>
         
-        <Navbar active={ props.currentPage } getRef={props.getRef}></Navbar>
+        <Navbar></Navbar>
         <div style={{minHeight: '70vh', display: 'block'}}>
             { props.children }
         </div>        

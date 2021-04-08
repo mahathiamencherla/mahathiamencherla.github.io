@@ -1,16 +1,16 @@
 import React, { useContext, Fragment  } from 'react';
 import { Context } from '../context/context';
 
-const Projects = () => {
-  const { projects } = useContext(Context);
+const Workex = () => {
+  const { workex } = useContext(Context);
 
   return (
     <Fragment >
       <div style={{height: '1000px'}}>
-      <h1 ref={projects}>Projects</h1>
+      <h1 ref={workex}>Workex</h1>
       </div>
     </Fragment>
   )
 }
 
-export default Projects;
+export default Workex;

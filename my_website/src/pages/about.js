@@ -6,7 +6,9 @@ const AboutMe = () => {
 
   return (
     <Fragment >
+      <div style={{height: '1000px'}}>
       <h1 ref={aboutme}>About Me</h1>
+      </div>
     </Fragment>
   )
 }
