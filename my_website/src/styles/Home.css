@@ -172,5 +172,9 @@ h3 {
   .gap {
     height: 25vh;
   }
+  .contact-button {
+    height: 3rem;
+    font-size: 1rem;
+  }
 }
 

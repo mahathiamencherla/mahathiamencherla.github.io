@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { IconButton } from '@material-ui/core';
 import { Context } from '../context/context';
 
@@ -16,9 +16,12 @@ import '../styles/Home.css';
 import Orca from '../orca.png';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const Home = (props) => {
-  const { contact, setActivePage } = useContext(Context);
+  const NotmobileView = useMediaQuery("(min-width:768px)")
+  const { aboutme, workex, projects, skills, interests, volunteering, contact, setActivePage } = useContext(Context);
+  const scrollRef = useRef(null);
 
   const contactPage = () => {
     setActivePage('contact')
@@ -28,18 +31,44 @@ const Home = (props) => {
     })
   };
 
+  const listenScrollEvent = () => {
+    const scrollY = window.scrollY; 
+    if(scrollY > aboutme.current.offsetTop-150 && scrollY < workex.current.offsetTop-150) {
+      setActivePage('aboutme')
+    } else if(scrollY > workex.current.offsetTop-150 && scrollY < projects.current.offsetTop-150) {
+      setActivePage('workex')
+    } else if(scrollY > projects.current.offsetTop-150 && scrollY < skills.current.offsetTop-150) {
+      setActivePage('projects')
+    } else if(scrollY > skills.current.offsetTop-150 && scrollY < interests.current.offsetTop-150) {
+      setActivePage('skills')
+    } else if(scrollY > interests.current.offsetTop-150 && scrollY < volunteering.current.offsetTop-150) {
+      setActivePage('interests')
+    } else if(scrollY > volunteering.current.offsetTop-150 && scrollY < contact.current.offsetTop-150) {
+      setActivePage('volunteering')
+    } else if(scrollY > contact.current.offsetTop-150) {
+      setActivePage('contact')
+    }else{
+      setActivePage('home')
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenScrollEvent);
+  })
+
   return (
-    <Fragment>
-    <div className="header">
+    <div ref={scrollRef} onScroll={listenScrollEvent}>
+    <div className="header" 
+    >
       <div className="inner-header">
         <div className="header-text">
           <h1>I'm Mahathi, a <span className="text-rotator"></span></h1>
           <div className="socials-div">
-            <IconButton style={{marginRight: '5rem'}}>
-              <GitHubIcon style={{width: '5rem', height: '5rem', color: '#1b2129'}}/>
+            <IconButton style={{marginRight: NotmobileView ? '5rem' : '2rem'}}>
+              <GitHubIcon style={{width: NotmobileView ? '5rem' : '2rem', height: NotmobileView ? '5rem' : '2rem', color: '#1b2129'}}/>
             </IconButton>
-            <IconButton style={{marginRight: '5rem'}}>
-              <LinkedInIcon style={{width: '6rem', height: '6rem', color: '#1b2129'}}/>
+            <IconButton style={{marginRight: NotmobileView ? '5rem' : '2rem'}}>
+              <LinkedInIcon style={{width: NotmobileView ? '6rem' : '3rem', height: NotmobileView ? '6rem' : '3rem', color: '#1b2129'}}/>
             </IconButton>
             <button className="contact-button" onClick={contactPage}>Contact</button>
           </div>
@@ -58,7 +87,7 @@ const Home = (props) => {
     <Interests/>
     <Volunteering/>
     <Contact/>
-    </Fragment>
+    </div>
   );
 }
 
